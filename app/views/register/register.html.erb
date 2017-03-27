@@ -1,0 +1,70 @@
+<%= javascript_include_tag 'register'%>
+<%= stylesheet_link_tag 'reg' %>
+
+<div class="start_wrap">
+  <div class="advert">
+    <p class="tagline"> <span>Remember</span>  that great idea you had, or that task you've been meaning to get to? </p>
+    <p class="tagline" id="line2">Now you do!</p>
+  </div>
+  <div class="notice">
+    <p id="notice"><%= flash[:notice] %></p>
+  </div>
+  <div class="opts">
+    <% if flash[:notice]%>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+    <button id="opts">Create a New Account</button>
+    <div class="opts2">
+      <button id="optsL">Login</button>
+    </div>
+  </div>
+</div>
+
+<div id="myReg" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <% if @errors %>
+      <% @errors.each do |e| %>
+        <p><%= e %></p>
+      <% end %>
+    <% end %>
+    <h2>Register</h2>
+    <form class="register" action="/register" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <label>First Name</label>
+      <span id="f"></span>
+      <p><input id="fname" type="text" name="user[firstname]" ></p>
+      <label >Last Name</label>
+      <span id="l"></span>
+      <p><input id="lname" type="text" name="user[lastname]"></p>
+      <label>Email</label>
+      <span id="e"></span>
+	    <p><input type="email" id="email" name="user[email]"/></p>
+      <label >Password</label>
+      <span id="p"></span>
+      <p><input id="password" type="password" name="user[password]"></p>
+      <label >Confirm Password</label>
+      <span id="cp"></span>
+      <p><input id="conf_password" type="password" name="user[password_confirmation]"></p>
+      <input class="submit" type="submit" name="submit" value="Submit">
+    </form>
+  </div>
+</div>
+
+<div id="myLogin" class="modal">
+  <div class="modal-content">
+    <span class="close2">&times;</span>
+    <p><small class="flash_error"><%= flash[:notice] %></small></p>
+    <h2>Login</h2>
+    <form class="login" action="/login" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <label>Email</label>
+      <span class='e'></span>
+      <p><input type="text" name="email" class="email"></p>
+      <label>Password</label>
+      <span></span>
+      <p><input type="password" name="password"></p>
+      <input type="submit" name="submit" value="Login">
+    </form>
+  </div>
+</div>

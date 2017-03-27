@@ -1,0 +1,33 @@
+<h1>Register#register</h1>
+<p>Find me in app/views/register_users/register.html.erb</p>
+<div class="reg_form">
+  <p><small class="flash_err"><%= flash[:errors] %></small></p>
+  <h2>Register Account</h2>
+  <form class="register" action="/register" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label>First Name</label>
+    <input type="text" name="user[firstname]">
+    <label>Last Name</label>
+    <input type="text" name="user[lastname]">
+    <label>Email</label>
+    <input type="text" name="user[email]">
+    <label>Password</label>
+    <input type="password" name="user[password]">
+    <label>Confirm Password</label>
+    <input type="password" name="user[password_confirmation]">
+    <input type="submit" name="submit" value="Register">
+  </form>
+</div>
+
+<div class="login_form">
+  <p><small class="flash_err"><%= flash[:notice] %></small></p>
+  <h2>Login</h2>
+  <form class="login" action="/login" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label>Email</label>
+    <input type="text" name="email">
+    <label>Password</label>
+    <input type="password" name="password">
+    <input type="submit" name="submit" value="Login">
+  </form>
+</div>

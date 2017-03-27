@@ -1,0 +1,51 @@
+<%= stylesheet_link_tag 'reg' %>
+
+<div class="reg">
+  <% if @errors %>
+  <div class="errors">
+      <% @errors.each do |e| %>
+        <p><%= e %></p>
+      <% end %>
+  </div>
+  <% end %>
+
+  <form class="register" action="/register" method="POST">
+
+    <h2>Register</h2>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label>First Name</label>
+    <p><input type="text" name="user[firstname]"></p>
+
+    <label>Last Name</label>
+    <p><input type="text" name="user[lastname]"></p>
+
+    <label>Email</label>
+    <p><input type="text" name="user[email]"></p>
+
+    <label>Password</label>
+    <p><input type="password" name="user[password]"></p>
+
+    <label>Confirm Password</label>
+    <p><input type="password" name="user[password_confirmation]"></p>
+
+    <input type="submit" name="submit" value="Register">
+  </form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".reg").submit(function(){
+    $.ajax({
+      url: '/register',
+      type: 'POST',
+      data: $(this).serialize() && $(this).attr('action'),
+      error: function(xhr, status, json, data){
+        $("body").html(data).append();
+        $('.opts').replaceWith('#myReg');
+        console.log(xhr.responseText);
+        console.log(json);
+      }
+    })
+  });
+});
+</script>

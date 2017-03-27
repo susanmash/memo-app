@@ -1,0 +1,47 @@
+<%= javascript_include_tag 'memo' %>
+<% stylesheet_link_tag 'main' %>
+
+<form class="make_memo">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input id="make_memo" type="text" name="memo" placeholder="Make note of...">
+</form>
+
+<div class="newMemo">
+  <form id="newMemo" class="memo_form" action="/memos/create" method="post">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input class="title" type="text" name="memo[title]" placeholder="Title">
+    <p><textarea class="memo_content" name="memo[content]" rows="8" cols="80" placeholder="Make note of..."></textarea></p>
+
+    <input type="hidden" name="memo[user_id]" value="<%= @user.id %>">
+    <a id="cancel_memo" href="#">Don't Save</a>
+    <input id="savebtn" type="submit" name="submit" value="Save">
+  </form>
+</div>
+
+<div class="all_memos">
+  <% @memos.each do |m| %>
+    <form class="edit_memo" id="<%= m.id %>" action="/edit/<%= m.id %>" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <div class="p" id="<%= m.id %>"><p class="p priority_<%= m.priority %>"></p> </div>
+      <p class="title_wrap"><input class="title" name="edit[title]" type="text" value="<%= m.title %>" /></p>
+      <textarea class="rev" name="edit[content]" rows="8" cols="80" value="<%= m.content %>"><%= m.content %></textarea><br>
+      <p class="new_date">Created on <%= m.created_at.to_s(:long)%></p>
+      <p class="new_date">Edited on <%= m.updated_at.to_formatted_s(:long)%></p>
+      <span id="expand" href="#" ><%= image_tag("expand.png", size: "20x20", alt: "expand" )%></span>
+      <span id='minimize' href="#" ><%= image_tag("minimize.png", size: "20x20")%></span>
+      <a data-method="delete" href="/memo/<%= m.id %>" id="note_dlt"><span id="dlt_span">Delete Note</span> X</a>
+    </form>
+
+    <form class="m_priority" action="/memo/<%= m.id %>" method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <select  class="p_memo" name="priority">
+        <option value="0"></option>
+        <option value="1" style="width:100%;background-color:#E74C3C"></option>
+        <option value="2" style="width:100%;background-color:#F4D03F"></option>
+        <option value="3" style="width:100%;background-color:#1ABC9C"></option>
+        <option value="4" style="width:100%;background-color:#3498DB"></option>
+        <option value="5" style="width:100%;background-color:#AF7AC5"></option>
+      </select>
+    </form>
+   <% end %>
+</div>

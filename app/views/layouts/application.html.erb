@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MemoApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Karma|Libre+Franklin" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <p>Memo Keeper</p>
+    <% if current_user %>
+      <span id="greeting">
+        Hi, <%= @user.firstname %>!
+      </span>
+      <a data-method='delete' href="/logout" id="logout"><span>Logout</span></a>
+    <% else %>
+      <a href="/" id="homeLink"><span>Home</span></a>
+    <% end %>
+  </header>
+
+<%= yield %>
+
+</body>
+</html>

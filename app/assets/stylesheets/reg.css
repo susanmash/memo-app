@@ -1,0 +1,331 @@
+*{
+  box-sizing: border-box;
+  font-family: 'Libre Franklin', sans-serif;
+  letter-spacing: .9px;
+  color: #414141;
+}
+
+/********* Home page components (not including forms) *********/
+
+body{
+  margin: 0;
+}
+
+header,
+header > p {
+  background-color: #FBFCFC;
+  margin: 0;
+}
+
+header {
+  min-width: 1741px;
+  box-shadow: 0 10px 6px -6px lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > p {
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 58px;
+  padding: 1%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h2 {
+  color: #414141;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+#greeting{
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 58px;
+  margin-right: 2%;
+  margin-left: auto;
+  padding: 1%;
+  color: #3498DB;
+}
+
+#homeLink{
+  text-decoration: none;
+  margin: 30px;
+}
+
+.advert{
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 34%;
+  min-width: 290px;
+  vertical-align: top;
+  margin-left: 10%;
+  margin-top: 2%;
+  color: #414141;
+}
+.tagline{
+  font-size: 42px;
+  margin: 6px;
+  font-family: 'Karma', serif;
+}
+
+#line2,
+.tagline > span {
+  font-weight: 400;
+  color: #3498DB;
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 56px;
+}
+
+/********** Buttons to open Modal Box forms **********/
+.opts {
+  width: 35%;
+  margin-right: 40px;
+  padding-top: 20px;
+  justify-content: center;
+  text-align: center;
+  vertical-align: top;
+  display: inline-flex;
+  flex-wrap: wrap;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.opts2{
+  width: 100%;
+}
+
+#opts, #optsL {
+  position: relative;
+  cursor: pointer;
+  font-family: 'Fredericka the Great', cursive;
+  color: #239B56;
+  font-size: 38px;
+  margin: 1%;
+  padding: 6px;
+  background-color: #FFE889;
+  border-style: none;
+}
+#opts:before, #opts:after{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  min-width: 160px;
+  -webkit-box-shadow: 0 15px 10px #9A7D0A;
+  -moz-box-shadow: 0 15px 10px #9A7D0A;
+  box-shadow: 0 15px 10px #9A7D0A;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+  background-color: #D6EAF8;
+}
+#optsL:before, #optsL:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 16px;
+  left: 8px;
+  width: 48%;
+  top: 64%;
+  min-width: 112px;
+  background-color: #D6EAF8;
+  -webkit-box-shadow: 0 15px 10px #9A7D0A;
+  -moz-box-shadow: 0 15px 10px #9A7D0A;
+  box-shadow: 0 15px 10px #9A7D0A;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+#opts:after{
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+  background-color: #D6EAF8;
+}
+#optsL:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+  background-color: #D6EAF8;
+}
+.opts > #opts,
+.opts > .opts2 > #optsL{
+  width: 60%;
+  min-width: 190px;
+  font-size: 40px;
+}
+
+.opts > p {
+  color: #1D8348;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.opts2{
+  padding-top: 5%;
+  width: 90%;
+  height: 110px;
+}
+
+#opts:hover,
+#optsL:hover{
+  color: #1D8348;
+  /*background-color: #F0F6FA;*/
+  background-color: #F4D03F;
+}
+
+
+/********** Modal Box Login & Registration forms **********/
+
+/* Modal Box background */
+.modal,
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content{
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 1%;
+    width: 36%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    min-width: 250px;
+}
+
+.register,
+.login{
+  background-color: #fefefe;
+  margin: 1% auto; /* 15% from the top and centered */
+  width: 60%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  min-width: 200px;
+}
+
+.register > span{
+  width: 100%;
+  display: inline-block;
+}
+
+.register > input{
+  width: 60%;
+}
+
+.register > input[type='submit'],
+.login > input[type='submit']{
+  background-color: #3498DB;
+  border-style: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 16px;
+  width: 45%;
+  margin: 2% auto 2.5% auto;
+  color: white;
+  cursor: pointer;
+}
+
+.register > input[type='submit']:hover,
+.login > input[type='submit']:hover {
+  opacity: .5;
+}
+
+.register > p{
+  margin-top: 10px;
+}
+
+/* The Close Button */
+.close,
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/********** Partial view forms **********/
+
+.reg,
+.log {
+  border: 1px solid #888;
+  width: 35%;
+  margin: 2% auto;
+  display: block;
+  text-align: center;
+  /*padding: 10px 0px;*/
+}
+
+.errors {
+  width: 60%;
+  background-color: #F5B7B1;
+  border: 1px solid #F1948A;
+  border-radius: 8px;
+  color: #414141;
+  margin: 10px auto 4px auto;
+  font-weight: 600;
+  padding: 1%;
+  font-size: 14px;
+}
+
+.reg > .errors{
+  width: 70%;
+  padding: 1%;
+}
+
+.errors > p{
+  width: 100%;
+}
+
+.start_wrap{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice{
+  display: none;
+}
+
+/********** media queries **********/
+
+@media only screen and (max-width: 1738px) {
+  header{
+    min-width: 100%;
+  }
+}

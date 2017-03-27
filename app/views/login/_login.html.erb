@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag 'reg' %>
+
+<div class="log">
+    <% if @errors %>
+    <div class="errors">
+      <p><%= @errors %></p>
+    </div>
+    <% end %>
+  <form class="login" action="/login" method="post">
+    <h2>Login</h2>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <label>Email</label>
+    <p><input type="text" name="email"></p>
+    <label>Password</label>
+    <p><input type="password" name="password"></p>
+    <input type="submit" name="submit" value="Login">
+  </form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#myLogin").submit(function(){
+    $.ajax({
+      url: '/login',
+      type: 'POST',
+      data: $(this).serialize() && $(this).attr('action'),
+      error: function(xhr, status, json, data){
+        $("body").html(data).append();
+        $('.opts').replaceWith('#myLogin');
+        console.log(xhr.responseText);
+        console.log(json);
+      }
+    })
+  });
+});
+</script>
